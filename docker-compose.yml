@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  db:
+    image: mental/postgres:12
+    container_name: cont_test_db
+    hostname: test.marineadvisor.com
+    restart: always
+    ports:
+      - "5400:5432"
+    volumes:
+      - test_db_data:/var/lib/postgresql
+      - test_db_log:/var/log/postgresql
+    environment:
+      - DB_USER=test
+      - DB_PASS=123
+      - DB_NAME=test_db
+      - PG_PASSWORD=123
+volumes:
+  test_db_data:
+  test_db_log:
